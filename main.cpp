@@ -3,18 +3,13 @@
 #include <unistd.h>
 #include <dpp/dpp.h>
 
-// #include <./token.h>
+#include <token.h>
 
 using std::string;
-
-string token = "MTAwNzMyOTIxMDE4NjA4MDI5Ng.GUuHxb.LJ6RLA_xRFzmv02jJsx4Uvszrz5-skn2q9GrJQ";
 
 int main(int argc, char const *argv[1])
 {
     dpp::cluster bot(token);
-    // dpp::commandhandler command_handler(&bot);
-
-    // command_handler.add_prefix(".").add_prefix("/");
 
     bot.on_ready([&bot](const dpp::ready_t& event) {
         if (dpp::run_once<struct register_bot_commands>())
@@ -25,7 +20,6 @@ int main(int argc, char const *argv[1])
             bot.global_command_create(dpp::slashcommand("UwU", "UwU!", bot.me.id));
             bot.global_command_create(dpp::slashcommand("lud", "zrobie ci louda!", bot.me.id));
 
-            // command_handler::register_command();
             std::cout << "\033[1;32mOn\033[0m\n";
         }
     });
